@@ -1,0 +1,7 @@
+If you are going with a Message Bus type of Engine, concider coding the Console and the Message Bus first. Once those are implemented, you can fake the existence of any System that has not yet been coded. You will have constant control over the entire engine at every stage of developement.
+
+Concider moving on to the GUI next, as well as the needed Draw functionality inside the Framework. A solid GUI paired with the Console will allow you to fake all other Systems even easier. Testing will be a breeze.
+
+Next should be the Framework, at least it's interface. Functionality can follow later.
+
+Finally, move on to the other Systems, including Gameplay.

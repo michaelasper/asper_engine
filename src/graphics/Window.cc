@@ -45,6 +45,8 @@ bool Window::init() {
   glfwSetWindowSizeCallback(_window, resizeWindow);
   glfwSetWindowUserPointer(_window, this);
   glfwSetKeyCallback(_window, engine::input::Input::getInstance().key_callback);
+  glfwSetMouseButtonCallback(
+      _window, engine::input::Input::getInstance().mouse_callback);
 
   std::cout << "OpenGL Version " << glGetString(GL_VERSION) << std::endl;
 

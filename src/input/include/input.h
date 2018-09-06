@@ -25,6 +25,7 @@ private:
       _buttons[i] = false;
   }
   static void handleKeyCallback(int key, int scancode, int action, int mods);
+  static void handleMouseCallback(int button, int action, int mods);
 
 public:
   inline bool isKeyPressed(unsigned int key) {
@@ -32,11 +33,23 @@ public:
       return false;
     return _keys[key];
   }
+
+  inline bool isMousePressed(unsigned int button) {
+    if (button >= MAX_BUTTONS)
+      return false;
+    return _buttons[button];
+  }
+
   Input(Input const &) = delete;
   void operator=(Input const &) = delete;
   static void key_callback(GLFWwindow *window, int key, int scancode,
                            int action, int mods) {
     handleKeyCallback(key, scancode, action, mods);
+  }
+
+  static void mouse_callback(GLFWwindow *window, int button, int action,
+                             int mods) {
+    handleMouseCallback(button, action, mods);
   }
 };
 

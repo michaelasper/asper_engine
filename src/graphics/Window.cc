@@ -25,6 +25,7 @@ void Window::update() {
 }
 
 bool Window::init() {
+  using namespace engine;
 
   if (!glfwInit()) {
     std::cout << "Error" << std::endl;
@@ -44,9 +45,11 @@ bool Window::init() {
   glfwMakeContextCurrent(_window);
   glfwSetWindowSizeCallback(_window, resizeWindow);
   glfwSetWindowUserPointer(_window, this);
-  glfwSetKeyCallback(_window, engine::input::Input::getInstance().key_callback);
-  glfwSetMouseButtonCallback(
-      _window, engine::input::Input::getInstance().mouse_callback);
+  glfwSetKeyCallback(_window, input::Input::getInstance().key_callback);
+  glfwSetMouseButtonCallback(_window,
+                             input::Input::getInstance().mouse_callback);
+  glfwSetCursorPosCallback(_window,
+                           input::Input::getInstance().cursor_pos_callback);
 
   std::cout << "OpenGL Version " << glGetString(GL_VERSION) << std::endl;
 

@@ -11,5 +11,11 @@ void Input::handleMouseCallback(int button, int action, int mods) {
   std::cout << button << std::endl;
   Input::getInstance()._buttons[button] = action != GLFW_RELEASE;
 }
+
+void Input::handleCursorCallback(double xpos, double ypos) {
+  //   std::cout << xpos << " " << ypos << std::endl;
+  Input::getInstance()._mx = xpos;
+  Input::getInstance()._my = ypos;
+}
 } // namespace input
 } // namespace engine

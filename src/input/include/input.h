@@ -15,7 +15,7 @@ public:
 private:
   bool _keys[MAX_KEYS];
   bool _buttons[MAX_BUTTONS];
-  double mx, my;
+  double _mx, _my = 0;
 
 private:
   Input() {
@@ -26,6 +26,7 @@ private:
   }
   static void handleKeyCallback(int key, int scancode, int action, int mods);
   static void handleMouseCallback(int button, int action, int mods);
+  static void handleCursorCallback(double xpos, double ypos);
 
 public:
   inline bool isKeyPressed(unsigned int key) {
@@ -50,6 +51,11 @@ public:
   static void mouse_callback(GLFWwindow *window, int button, int action,
                              int mods) {
     handleMouseCallback(button, action, mods);
+  }
+
+  static void cursor_pos_callback(GLFWwindow *window, double xpos,
+                                  double ypos) {
+    handleCursorCallback(xpos, ypos);
   }
 };
 

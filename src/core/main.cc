@@ -2,18 +2,16 @@
 #define GL_SILENCE_DEPRECATION
 
 #include "../graphics/include/Window.h"
+#include "../math/include/vec.h"
 #include "include/Game.h"
 #include <iostream>
 
 int main(int argc, char const *argv[]) {
   using namespace engine;
-  using namespace graphics;
-  Window *window = new Window("Hello World", 640, 480);
-
-  GLuint vao;
-  glGenVertexArrays(1, &vao);
-  while (!window->isClosed()) {
-    window->update();
-  }
+  math::Vec<float, 2> test{};
+  test[0] = 2;
+  test[1] = 3;
+  auto test2 = test + 5;
+  std::cout << test2;
   return 0;
 }
